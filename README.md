@@ -1,5 +1,5 @@
 # Overview
-This project is a sample that helps to showcase how Spring supports Server-Sent Events.  The application simulates an on-line ordering system, allowing HTTP clients to subscribe to changes in orders as they progress through the processing pipeline.  The program knows about orders 0-3 which clients can subscribe to, getting any changes as they occur.
+This project is a sample that helps to showcase how Spring supports [Amazon Simple Queue Service (SQS)](https://aws.amazon.com/sqs/).  Every second a simple payload is placed on the queue which a consumer should immediately process.
 
 # Guidebook
 Details about this project are contained in the [guidebook](guidebook/guidebook.md)
@@ -17,13 +17,7 @@ Nothing to install.
 
 # Tips and Tricks
 ## Starting The Server
-`./gradlew bootRun` will start the server on port `8080` and begin transitioning the orders.  Every 4 seconds an order is randomly selected and transitioned to the next stage.  Eventually, all orders will end in the `Completed` state.
-
-## Subscribing
-While the server is running, run `curl localhost:8080/subscribe/0` which will have the client wait one minute for any updates to order `0`.  You can also run a second instance of cURL, which will get the same updates.  If the order has already transitioned to `Complete`, no updates are coming so the connection is closed.
-
-## Cleanup
-The connection to the subscriber will terminate due to one of two reasons.  One, the transitions are complete so no more updates are forthcoming. Second, the client is done waiting and disappears.  In either case, callbacks are invoked that clean up the various lookup tables.  
+`./gradlew bootRun` will start the server on port `8080` and begin producing messages every second.
 
 # Troubleshooting
 
