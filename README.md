@@ -19,7 +19,27 @@ Nothing to install.
 ## Starting The Server
 Edit `application.yml`, inserting your API keys.
 
-`./gradlew clean bootRun` will start the server on port `8080` and begin producing messages every second.
+`./gradlew clean bootRun` will start the server on port `8080` and begin producing messages every second. You should see something similar to this:
+
+```
+2017-12-22 10:45:15.560  INFO 32766 --- [enerContainer-4] com.example.sqs.sqs.SqsApplication       : Consuming 10e
+2017-12-22 10:45:15.560  INFO 32766 --- [enerContainer-4] com.example.sqs.sqs.SqsApplication       :     LogicalResourceId: sqs-experiment
+2017-12-22 10:45:16.105  INFO 32766 --- [enerContainer-4] com.example.sqs.sqs.SqsApplication       : Consuming 110
+2017-12-22 10:45:16.105  INFO 32766 --- [enerContainer-4] com.example.sqs.sqs.SqsApplication       :     LogicalResourceId: sqs-experiment
+2017-12-22 10:45:16.362  INFO 32766 --- [pool-2-thread-1] com.example.sqs.sqs.SqsApplication       : Producing message 111
+2017-12-22 10:45:17.264  INFO 32766 --- [enerContainer-4] com.example.sqs.sqs.SqsApplication       : Consuming 111
+2017-12-22 10:45:17.264  INFO 32766 --- [enerContainer-4] com.example.sqs.sqs.SqsApplication       :     LogicalResourceId: sqs-experiment
+2017-12-22 10:45:17.363  INFO 32766 --- [pool-2-thread-1] com.example.sqs.sqs.SqsApplication       : Producing message 112
+2017-12-22 10:45:18.362  INFO 32766 --- [pool-2-thread-1] com.example.sqs.sqs.SqsApplication       : Producing message 113
+2017-12-22 10:45:18.603  INFO 32766 --- [enerContainer-4] com.example.sqs.sqs.SqsApplication       : Consuming 112
+2017-12-22 10:45:18.603  INFO 32766 --- [enerContainer-4] com.example.sqs.sqs.SqsApplication       :     LogicalResourceId: sqs-experiment
+2017-12-22 10:45:18.865  INFO 32766 --- [enerContainer-4] com.example.sqs.sqs.SqsApplication       : Consuming 113
+2017-12-22 10:45:18.865  INFO 32766 --- [enerContainer-4] com.example.sqs.sqs.SqsApplication       :     LogicalResourceId: sqs-experiment
+2017-12-22 10:45:19.362  INFO 32766 --- [pool-2-thread-1] com.example.sqs.sqs.SqsApplication       : Producing message 114
+2017-12-22 10:45:19.875  INFO 32766 --- [enerContainer-4] com.example.sqs.sqs.SqsApplication       : Consuming 114
+2017-12-22 10:45:19.875  INFO 32766 --- [enerContainer-4] com.example.sqs.sqs.SqsApplication       :     LogicalResourceId: sqs-experiment
+```
+
 
 # Troubleshooting
 
