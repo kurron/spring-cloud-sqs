@@ -7,7 +7,7 @@ and should be considered mandatory reading prior to contributing to this project
 
 # Prerequisites
 * [JDK 8](http://zulu.org/) installed and working
-* [cURL](https://curl.haxx.se/) for testing
+* an SQS queue named `sqs-experiment` -- you can select another name but will have to edit the code
 
 # Building
 `./gradlew` will pull down any dependencies, compile the source and package everything up.
