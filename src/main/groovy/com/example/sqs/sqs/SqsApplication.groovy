@@ -9,6 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.cloud.aws.messaging.core.QueueMessagingTemplate
 import org.springframework.cloud.aws.messaging.listener.annotation.SqsListener
 import org.springframework.messaging.handler.annotation.Headers
+import org.springframework.messaging.handler.annotation.SendTo
 import org.springframework.messaging.support.MessageBuilder
 import org.springframework.scheduling.annotation.Scheduled
 
@@ -38,8 +39,18 @@ class SqsApplication {
     }
 
     @SqsListener( 'sqs-experiment' )
-    static void consumer( @Headers Map<String, String> headers, String payload ) {
-        log.info( 'Consuming {}', payload )
+    @SendTo( 'secondary-queue' )
+    static String primaryConsumer( @Headers Map<String, String> headers, String payload ) {
+        log.info( 'Consuming {} from sqs-experiment', payload )
+        headers.every { key, value ->
+            log.info( '    {}: {}', key, value )
+        }
+        payload.toUpperCase()
+    }
+
+    @SqsListener( 'secondary-queue' )
+    static void secondaryConsumer( @Headers Map<String, String> headers, String payload ) {
+        log.info( 'Consuming {} from secondary-queue', payload )
         headers.every { key, value ->
             log.info( '    {}: {}', key, value )
         }
