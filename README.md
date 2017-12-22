@@ -17,7 +17,9 @@ Nothing to install.
 
 # Tips and Tricks
 ## Starting The Server
-`./gradlew bootRun` will start the server on port `8080` and begin producing messages every second.
+Edit `application.yml`, inserting your API keys.
+
+`./gradlew clean bootRun` will start the server on port `8080` and begin producing messages every second.
 
 # Troubleshooting
 
